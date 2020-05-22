@@ -1,8 +1,8 @@
 
 <header>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container">
-		  	<a class="navbar-brand" href="index.php">Amigos da Paz</a>
+	<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+		<a class="navbar-brand btn bg-dark text-white text-uppercase" href="index.php">Amigos da Paz</a>
+		  	
 		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  	</button>
@@ -31,15 +31,15 @@
 		  		{
 		  	?>
 
-			  	<div class="collapse navbar-collapse" id="navbarNav">
+			  	<div class="collapse navbar-collapse row container" id="navbarNav">
 			    	<ul class="navbar-nav">
 			      		<li class="nav-item active">
-			        		<a class="nav-link" href="index.php">Home</a>
+			        		<a class="nav-link btn bg-dark text-white" href="index.php">Home</a>
 			      		</li>
 			    	</ul>
 			    	<ul class="navbar-nav">
 			      		<li class="nav-item active">
-			        		<a class="nav-link" href="profile.php">Perfil</a>
+			        		<a class="nav-link btn bg-dark text-white" href="profile.php">Perfil</a>
 			      		</li>
 			    	</ul>
 			    	<?php 
@@ -48,7 +48,7 @@
 			    	?>
 				    	<ul class="navbar-nav">
 				      		<li class="nav-item active">
-				        		<a class="nav-link" href="product.php">Produtos e Voluntáriado</a>
+				        		<a class="nav-link btn bg-dark text-white" href="product.php">Produtos e Voluntáriado</a>
 				      		</li>
 				    	</ul>
 			    	<?php 
@@ -61,7 +61,7 @@
 			    	?>
 				    	<ul class="navbar-nav">
 				      		<li class="nav-item active">
-				        		<a class="nav-link" href="dashboard.php">Dashboard</a>
+				        		<a class="nav-link btn bg-dark text-white" href="dashboard.php">Dashboard</a>
 				      		</li>
 				    	</ul>
 			    	<?php 
@@ -69,18 +69,12 @@
 			    	?>
 			    	<ul class="navbar-nav">
 			      		<li class="nav-item active">
-			        		<a class="nav-link" href="organs.php">Organização e Doação</a>
+			        		<a class="nav-link btn bg-dark text-white" href="organs.php">Organização e Doação</a>
 			      		</li>
 			    	</ul>
 
 			    	<ul class="navbar-nav ml-2">
 			      		<li class="nav-item active"><?php echo $data["name"]; ?></li>
-			    	</ul>
-
-			    	<ul class="navbar-nav ml-2">
-			      		<li class="nav-item active">
-			        		<a class="nav-link btn btn-primary" href="logout.php">Sair</a>
-			      		</li>
 			    	</ul>
 			  	</div>
 
@@ -89,24 +83,23 @@
 				else
 				{
 			?>
-				<div class="collapse navbar-collapse" id="navbarNav">
+				<div class="collapse navbar-collapse container" id="navbarNav">
+					<ul class="navbar-nav"></ul>
 			    	<ul class="navbar-nav">
+			    		<li class="nav-item active">
+				        	<a class="nav-link btn bg-dark text-white" href="login.php">Login</a>
+				      	</li>
+				      	<li class="nav-item active">
+				        	<a class="nav-link btn bg-dark text-white" href="register.php">Cadastrar</a>
+				      	</li>
 			      		<li class="nav-item active">
-			        		<a class="nav-link" href="index.php">Home</a>
+			        		<a class="nav-link btn btn-primary btn btn-outline-dark" href="logout.php">Sair</a>
 			      		</li>
-				      	<li class="nav-item active">
-				        	<a class="nav-link" href="login.php">Login</a>
-				      	</li>
-				      	<li class="nav-item active">
-				        	<a class="nav-link" href="register.php">Cadastrar</a>
-				      	</li>
 			    	</ul>
 			  	</div>
 
 			<?php 
 				}
 			?>
-
-	  	</div>
-	</nav>
-</header>
+		</nav>
+	</header>
