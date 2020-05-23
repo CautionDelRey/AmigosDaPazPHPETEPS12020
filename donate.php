@@ -6,7 +6,7 @@
 	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 	<meta charset="UTF-8">
 	<meta name="description" content="Amigos da Paz">
-	<title>"Instituição"</title>
+	<title>Instituição</title>
 
 </head>
 <body class="bg-secondary">
@@ -123,7 +123,7 @@
 			exit();
 		}
 	?>
-	<div class="container-l pb-6 mb-5 bg-secondary">
+	<div class="container pb-6 mb-5 bg-secondary">
 		<div class="card p-5 mt-5 shadow-lg">
 			<?php 
 			$data = "";

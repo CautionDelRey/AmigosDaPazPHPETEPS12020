@@ -6,7 +6,7 @@
 	<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 	<meta charset="UTF-8">
 	<meta name="description" content="Amigos da Paz">
-	<title></title>
+	<title>Registre-se</title>
 
 </head>
 <body>
