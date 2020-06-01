@@ -1,17 +1,30 @@
 <?php 
-  session_start();
+  include('Validation.php');
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-
+ 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    a:link, li
+  {
+  list-style: none !important;
+  text-decoration:none !important;
+  }
+  .nav-link.btn-primary:hover{
+    background: #ff1428 !important;
+    -webkit-filter: drop-shadow(10px 5px 2.5px rgba(0,0,0,.3));
+      filter: drop-shadow(10px 5px 2.5px rgba(0,0,0,.3));
+  }
+  </style>
 
   <title>Dashboard</title>
 
@@ -19,7 +32,7 @@
   <link href="assets/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link href="assets/dashboard/css/sb-admin-2.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<?php include('Shared/head.php'); ?>
 
 
   <style type="text/css">
@@ -37,11 +50,28 @@
 </head>
 
 <body id="page-top">
+   <?php   
 
-  <?php 
-    if(!isset($_SESSION['ManegerLoged']))
+    $dataUser = "";
+
+    if(isset($_SESSION['UserLogged']))
     {
-      header('Location: index.php');
+      $dataUser = $_SESSION['UserData'];
+    }
+
+    if(isset($_SESSION['OrganLogged']))
+    {
+      $dataUser = $_SESSION['OrganData'];
+    }
+
+    if(isset($_SESSION['ManagerLogged']))
+    {
+      $dataUser = $_SESSION['ManagerData'];
+    } 
+
+    if(!isset($_SESSION['ManagerLogged']))
+    {
+      header('Location: index');
       exit();
     }
 
@@ -49,57 +79,7 @@
 
   <div id="wrapper">
 
-    <ul class="navbar-nav btn_roxo sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-        
-        <div class="sidebar-brand-text mx-3">Dashboard</div>
-      </a>
-
-      <hr class="sidebar-divider my-0">
-
-      <li class="nav-item active">
-        <a class="nav-link" href="dashboard.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-      <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-        Gerencimento
-      </div>
-
-      <!-- Cadastro Voluntario -->
-     
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="dashboard/register.php"  aria-expanded="true" aria-controls="collapseTwo" >
-          <i class="fas fa-fw fa-cog"></i>
-          <span><b>Cadastrar Usuário</b></span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="dashboard/consult.php"  aria-expanded="true" aria-controls="collapseTwo" id="consult">
-          <i class="fas fa-fw fa-cog"></i>
-          <span><b>Consultar/Excluir Usuário</b></span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="dashboard/registerHelp.php"  aria-expanded="true" aria-controls="collapseTwo" >
-          <i class="fas fa-fw fa-cog"></i>
-          <span><b>Cadastrar Ajudas</b></span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="dashboard/consultHelp.php"  aria-expanded="true" aria-controls="collapseTwo" id="consult">
-          <i class="fas fa-fw fa-cog"></i>
-          <span><b>Consultar/Excluir Ajudas</b></span>
-        </a>
-      </li>
-
-    </ul>
+    <?php include('admin/includes/navbar-side-menu.php'); ?>
 
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -120,7 +100,7 @@
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar por ..." aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -131,7 +111,9 @@
               </div>
             </li>
 
-            <a style="padding: 0px 20px -10px 20px; margin: 10px;" class="btn btn_roxo text-color" href="logout.php" role="button"><b>Sair</b></a>
+            <li class="nav-item">
+                  <a class="nav-link btn btn-primary btn btn-outline-light" id="actFormLogoutSubmit" style="color: white; max-height: 35px; margin-top: 15px" href="#">Sair</a>
+              </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
             
@@ -139,7 +121,7 @@
               <a class="nav-link dropdown-toggle" style="margin-right: 5px; margin-left: 5px;" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
 
-                <b style="font-size: 20px;">Leonardo</b></span>
+                <b style="font-size: 20px;"><?php echo $dataUser["name"] ?></b></span>
                 
               </a>
               
@@ -170,7 +152,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+           <span>Copyright &copy;2020</span>
           </div>
         </div>
       </footer>
@@ -188,5 +170,15 @@
   <script src="assets/dashboard/js/sb-admin-2.min.js"></script>
 
 </body>
+<script>       
+$(function() {
+  $(this).on("click", "#actFormLogoutSubmit", function(event) {
+    event.preventDefault();
+    if (!confirm("Deseja realmente sair?")) return false;
+
+    location.href="../logout";
+  });
+});
+</script>
 
 </html>

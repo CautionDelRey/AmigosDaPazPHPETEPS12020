@@ -232,8 +232,8 @@
 		{	
 			if($data["typeUser"] === 'U')
 			{
-				// User Loged
-				$_SESSION['UserLoged'] = true;
+				// User Logged
+				$_SESSION['UserLogged'] = true;
 
 				// Putting information user into of a session
 				$_SESSION['UserData'] = $data;
@@ -254,8 +254,8 @@
 			}
 			else if($data["typeUser"] === 'O')
 			{
-				// Organ Loged
-				$_SESSION['OrganLoged'] = true;
+				// Organ Logged
+				$_SESSION['OrganLogged'] = true;
 
 				// Putting information user into of a session
 				$_SESSION['OrganData'] = $data;
@@ -284,11 +284,11 @@
 			}
 			else if($data["typeUser"] === 'G')
 			{
-				// Maneger Loged
-				$_SESSION['ManegerLoged'] = true;	
+				// Manager Logged
+				$_SESSION['ManagerLogged'] = true;	
 
 				// Putting information user into of a session
-				$_SESSION['ManegerData'] = $data;
+				$_SESSION['ManagerData'] = $data;
 
 				if($data["alteredPassword"] === "true")
 				{
@@ -317,19 +317,19 @@
 	{
 		$data = "";
 
-  		if(isset($_SESSION['UserLoged']))
+  		if(isset($_SESSION['UserLogged']))
   		{
   			$data = $_SESSION['UserData'];
   		}
 
-  		if(isset($_SESSION['OrganLoged']))
+  		if(isset($_SESSION['OrganLogged']))
   		{
   			$data = $_SESSION['OrganData'];
   		}
 
-  		if(isset($_SESSION['ManegerLoged']))
+  		if(isset($_SESSION['ManagerLogged']))
   		{
-  			$data = $_SESSION['ManegerData'];
+  			$data = $_SESSION['ManagerData'];
   		} 
 
 		if(removeuser($data["id"]))
@@ -354,19 +354,19 @@
 
 		$data = "";
 
-  		if(isset($_SESSION['UserLoged']))
+  		if(isset($_SESSION['UserLogged']))
   		{
   			$data = $_SESSION['UserData'];
   		}
 
-  		if(isset($_SESSION['OrganLoged']))
+  		if(isset($_SESSION['OrganLogged']))
   		{
   			$data = $_SESSION['OrganData'];
   		}
 
-  		if(isset($_SESSION['ManegerLoged']))
+  		if(isset($_SESSION['ManagerLogged']))
   		{
-  			$data = $_SESSION['ManegerData'];
+  			$data = $_SESSION['ManagerData'];
   		} 
 		
 		// Validating email
@@ -422,19 +422,19 @@
 
 		$data = "";
 
-  		if(isset($_SESSION['UserLoged']))
+  		if(isset($_SESSION['UserLogged']))
   		{
   			$data = $_SESSION['UserData'];
   		}
 
-  		if(isset($_SESSION['OrganLoged']))
+  		if(isset($_SESSION['OrganLogged']))
   		{
   			$data = $_SESSION['OrganData'];
   		}
 
-  		if(isset($_SESSION['ManegerLoged']))
+  		if(isset($_SESSION['ManagerLogged']))
   		{
-  			$data = $_SESSION['ManegerData'];
+  			$data = $_SESSION['ManagerData'];
   		} 
 
   		$emailAlterPassword = $data["email"];
@@ -463,19 +463,19 @@
 
 		$data = "";
 
-  		if(isset($_SESSION['UserLoged']))
+  		if(isset($_SESSION['UserLogged']))
   		{
   			$data = $_SESSION['UserData'];
   		}
 
-  		if(isset($_SESSION['OrganLoged']))
+  		if(isset($_SESSION['OrganLogged']))
   		{
   			$data = $_SESSION['OrganData'];
   		}
 
-  		if(isset($_SESSION['ManegerLoged']))
+  		if(isset($_SESSION['ManagerLogged']))
   		{
-  			$data = $_SESSION['ManegerData'];
+  			$data = $_SESSION['ManagerData'];
   		} 
 
   		$id = $data["id"];
